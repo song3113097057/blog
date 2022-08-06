@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxy.mapper.TypeMapper">
+    <!-- 保存新增分类 Type saveType(Type type);-->
+    <insert id="saveType" parameterType="com.sxy.entity.Type">
+        insert into t_type values(#{id},#{name});
+    </insert>
+    <!--根据id查询分类 Type getType(Long id);-->
+    <select id="getType" resultType="com.sxy.entity.Type">
+        select id,name from myblog.t_type where id = #{id}
+    </select>
+    <!--根据name查询分类 Type getTypeByName(@Param("name") String name);-->
+    <select id="getTypeByName" resultType="com.sxy.entity.Type">
+        select * from t_type where name = #{name}
+    </select>
+    <!--分页查询所有分类 Page<Type> getTypeList();-->
+    <select id="getTypeList" resultType="com.sxy.entity.Type">
+        select * from t_type
+    </select>
+
+    <!--//查询所有分类 List<Type> getAllType();-->
+    <select id="getAllType" resultType="com.sxy.entity.Type">
+        select * from t_type
+    </select>
+
+    <!--//获取topType
+    List<Type> getTopType(Integer size);-->
+    <resultMap id="topType" type="com.sxy.entity.Type">
+        <id property="id" column="tid"/>
+        <result property="name" column="tname"/>
+        <collection property="blogs" ofType="com.sxy.entity.Blog">
+            <id property="id" column="bid"/>
+            <result property="title" column="title"/>
+            <result property="typeId" column="type_id"/>
+        </collection>
+    </resultMap>
+    <select id="getBlogType" resultMap="topType">
+        select t.id tid,t.name tname,b.id bid, b.title, b.type_id
+        from t_type t, t_blog b
+        where t.id = b.type_id
+
+    </select>
+
+    <!--修改分类,先查询再修改保存 updateType(id,type)-->
+    <update id="updateType" parameterType="com.sxy.entity.Type">
+        update t_type set name = #{name} where id = #{id};
+    </update>
+    <!--删除分类 void deleteType(Long id);-->
+    <delete id="deleteType">
+        delete from t_type where id = #{id}
+    </delete>
+
+
+</mapper>

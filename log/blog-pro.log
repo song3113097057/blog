@@ -1,0 +1,14 @@
+2022-07-29 15:11:00.522  INFO 14316 --- [restartedMain] BlogApplication             : Starting BlogApplication using Java 1.8.0_321 on DESKTOP-RI0NCT9 with PID 14316 (D:\Code\Java\blog\target\classes started by sxy in D:\Code\Java\blog)
+2022-07-29 15:11:00.522  INFO 14316 --- [restartedMain] BlogApplication             : The following 1 profile is active: "pro"
+2022-07-29 15:11:01.132  WARN 14316 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sxy.blog]' package. Please check your configuration.
+2022-07-29 15:11:01.772  WARN 14316 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-07-29 15:11:02.398  INFO 14316 --- [restartedMain] BlogApplication             : Started BlogApplication in 2.367 seconds (JVM running for 3.181)
+2022-07-29 15:14:58.057  INFO 13812 --- [restartedMain] BlogApplication             : Starting BlogApplication using Java 1.8.0_321 on DESKTOP-RI0NCT9 with PID 13812 (D:\Code\Java\blog\target\classes started by sxy in D:\Code\Java\blog)
+2022-07-29 15:14:58.072  INFO 13812 --- [restartedMain] BlogApplication             : The following 1 profile is active: "pro"
+2022-07-29 15:14:58.728  WARN 13812 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sxy.blog]' package. Please check your configuration.
+2022-07-29 15:14:59.388  WARN 13812 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-07-29 15:14:59.981  INFO 13812 --- [restartedMain] BlogApplication             : Started BlogApplication in 2.434 seconds (JVM running for 3.232)
+2022-07-29 15:26:02.691  INFO 11488 --- [restartedMain] BlogApplication             : Starting BlogApplication using Java 1.8.0_321 on DESKTOP-RI0NCT9 with PID 11488 (D:\Code\Java\blog\target\classes started by sxy in D:\Code\Java\blog)
+2022-07-29 15:26:02.691  INFO 11488 --- [restartedMain] BlogApplication             : The following 1 profile is active: "pro"
+2022-07-29 15:26:03.363  WARN 11488 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.sxy.blog]' package. Please check your configuration.
+2022-07-29 15:26:04.676  INFO 11488 --- [restartedMain] BlogApplication             : Started BlogApplication in 2.566 seconds (JVM running for 3.394)

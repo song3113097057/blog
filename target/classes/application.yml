@@ -1,0 +1,22 @@
+spring:
+  thymeleaf:
+    mode: HTML
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+#配置mybatis规则
+mybatis:
+  mapper-locations:
+    classpath: com/sxy/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+

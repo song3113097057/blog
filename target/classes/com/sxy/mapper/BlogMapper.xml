@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxy.mapper.BlogMapper">
+
+    <!--//根据id查询 Blog getBlog(Long id);-->
+   <select id="getBlog" resultType="com.sxy.entity.Blog">
+       select b.id,b.flag,b.title,b.content,
+              b.first_picture,b.description,b.recommend,b.published,b.share_statement,
+              b.appreciation,b.commentabled,b.tag_ids
+       from t_blog b
+       where  b.id = #{id};
+
+   </select>
+
+    <!--//根据id查询博客详情
+    Blog getDetailedBlogById(Long id);-->
+
+    <select id="getDetailedBlogById" resultMap="showBlog">
+    select b.id, b.first_picture, b.flag, b.title, b.content, b.views,
+           b.update_time,b.commentabled, b.share_statement, b.appreciation,
+           u.nickname, u.avatar,
+           tag.id tagid, tag.name tagname
+    from t_blog b, t_user u, t_tag tag, t_blog_tags tb
+    where b.user_id = u.id and tb.blogs_id = b.id and tb.tags_id = tag.id and  b.id = #{id}
+    </select>
+
+
+    <!--Page<Blog> getBlogList(Blog blog);-->
+    <!--分页查询文章管理列表-->
+    <resultMap id="blog" type="com.sxy.entity.Blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="recommend" column="recommend"/>
+        <result property="published" column="published"/>
+        <result property="typeId" column="type_id"/>
+        <association property="type" javaType="com.sxy.entity.Type">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+        </association>
+    </resultMap>
+    <select id="getBlogList" resultMap="blog">
+        select b.id,b.title,b.create_time,b.update_time,b.recommend,b.published,b.type_id,t.id,t.name
+        from t_blog b, t_type t
+        <where>
+            <if test="1==1">
+                b.type_id = t.id
+            </if>
+            <if test="title != null and title !=''">
+                and  b.title like concat('%',#{title},'%')
+            </if>
+            <if test="typeId != null">
+                and b.type_id = #{typeId}
+            </if>
+            <if test="recommend == true">
+                and b.recommend = true
+            </if>
+        </where> order by b.update_time desc
+    </select>
+
+    <!--//分页展示所有：Page<Blog> getAllBlogList();-->
+    <resultMap id="showBlog" type="com.sxy.entity.Blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="flag" column="flag"/>
+        <result property="views" column="views"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="typeId" column="type_id"/>
+        <result property="firstPicture" column="first_picture"/>
+        <result property="shareStatement" column="share_statement"/>
+        <result property="published" column="published"/>
+        <result property="appreciation" column="appreciation"/>
+        <result property="commentabled" column="commentabled"/>
+        <result property="description" column="description"/>
+        <result property="recommend" column="recommend"/>
+        <result property="createTime" column="create_time"/>
+        <result property="typeId" column="type_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="tagIds" column="tag_ids"/>
+        <association property="type" javaType="com.sxy.entity.Type">
+            <id property="id" column="typeid"/>
+            <result property="name" column="typename"/>
+        </association>
+        <association property="user" javaType="com.sxy.entity.User">
+            <id property="id" column="uid"/>
+            <result property="nickname" column="nickname"/>
+            <result property="username" column="username"/>
+            <result property="email" column="email"/>
+            <result property="avatar" column="avatar"/>
+        </association>
+        <collection property="tags" ofType="com.sxy.entity.Tag">
+            <id property="id" column="tagid"/>
+            <result property="name" column="tagname"/>
+        </collection>
+    </resultMap>
+    <select id="getAllBlog" resultMap="showBlog">
+        select b.id, b.title, b.first_picture, b.views, b.update_time, b.description,
+               t.name typename, t.id typeid,
+               u.nickname, u.avatar
+        from t_blog b, t_type t, t_user u
+        where b.type_id = t.id and  u.id = b.user_id order by b.update_time desc
+    </select>
+
+    <!--//搜索博客
+    Page<Blog> getSearchBlog();-->
+    <select id="getSearchBlog" resultMap="showBlog">
+        select b.id, b.title, b.first_picture, b.views, b.update_time, b.description,b.content,
+               t.name typename, t.id typeid,
+               u.nickname, u.avatar
+        from t_blog b, t_type t, t_user u
+        <where>
+            <if test="1==1">
+                b.type_id = t.id and  u.id = b.user_id
+            </if>
+            <if test="query != null and query !=''">
+                and (b.title like concat('%',#{query},'%') or b.content like concat('%',#{query},'like'))
+            </if>
+        </where>
+
+    </select>
+
+    <!--//查询推荐
+    List<Blog> getAllRecommendBlog();  //推荐博客展示-->
+    <select id="getAllRecommendBlog" resultMap="showBlog">
+        select id, title, recommend from t_blog order by update_time desc;
+    </select>
+
+    <!--//新增保存对象  Blog saveBlog(Blog blog);-->
+    <insert id="saveBlog" parameterType="com.sxy.entity.Blog" useGeneratedKeys="true" keyProperty="id">
+        insert into t_blog (id,title, content, first_picture, flag,
+                                   views, comment_count, appreciation, share_statement, commentabled, published,
+                                   recommend, create_time, update_time, type_id, user_id, description,tag_ids)
+        values (#{id},#{title},#{content},#{firstPicture},#{flag},#{views},#{commentCount},#{appreciation},
+                #{shareStatement},#{commentabled},#{published},#{recommend},#{createTime},
+                #{updateTime},#{typeId},#{userId},#{description},#{tagIds});
+    </insert>
+
+    <!-- //保存在t_blog_tags表中
+    int saveBlogAndTag(BlogAndTag blogAndTag);-->
+    <insert id="saveBlogAndTag" parameterType="com.sxy.entity.BlogAndTag">
+        insert into t_blog_tags (tags_id, blogs_id) values (#{tagId},#{blogId});
+    </insert>
+
+    <!--//更新 Blog updateBlog(Long id,Blog blog);-->
+    <update id="updateBlog" parameterType="com.sxy.entity.Blog">
+        update t_blog set flag = #{flag} ,published = #{published},
+                          title = #{title}, content = #{content}, type_id = #{typeId}, tag_ids = #{tagIds},
+                          first_picture = #{firstPicture} , description = #{description} , recommend = #{recommend} ,
+                          share_statement = #{shareStatement}, appreciation = #{appreciation},
+                          commentabled = #{commentabled} ,update_time = #{updateTime} where id = #{id};
+    </update>
+
+
+    <!--//删除 void deleteBlog(Long id);-->
+    <delete id="deleteBlog">
+        delete from t_blog where id = #{id}
+    </delete>
+
+
+</mapper>
