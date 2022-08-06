@@ -6670,3 +6670,115 @@ java.lang.NullPointerException: null
 2022-08-06 16:10:52.380 DEBUG 13052 --- [http-nio-8080-exec-1] com.sxy.mapper.BlogMapper.getBlog        : ==>  Preparing: select b.id,b.flag,b.title,b.content, b.first_picture,b.description,b.recommend,b.published,b.share_statement, b.appreciation,b.commentabled,b.tag_ids from t_blog b where b.id = ?;
 2022-08-06 16:10:52.380 DEBUG 13052 --- [http-nio-8080-exec-1] com.sxy.mapper.BlogMapper.getBlog        : ==> Parameters: 114(Long)
 2022-08-06 16:10:52.383 DEBUG 13052 --- [http-nio-8080-exec-1] com.sxy.mapper.BlogMapper.getBlog        : <==      Total: 1
+2022-08-06 16:24:15.074  INFO 7164 --- [restartedMain] com.sxy.BlogApplication                  : Starting BlogApplication using Java 1.8.0_321 on DESKTOP-RI0NCT9 with PID 7164 (D:\Code\Java\blog\target\classes started by sxy in D:\Code\Java\blog)
+2022-08-06 16:24:15.090 DEBUG 7164 --- [restartedMain] com.sxy.BlogApplication                  : Running with Spring Boot v2.7.2, Spring v5.3.22
+2022-08-06 16:24:15.090  INFO 7164 --- [restartedMain] com.sxy.BlogApplication                  : The following 1 profile is active: "dev"
+2022-08-06 16:24:15.168  INFO 7164 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-06 16:24:15.168  INFO 7164 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-06 16:24:16.574  INFO 7164 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-08-06 16:24:16.590  INFO 7164 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-06 16:24:16.590  INFO 7164 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-06 16:24:16.636  INFO 7164 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-06 16:24:16.636  INFO 7164 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1468 ms
+2022-08-06 16:24:16.761  INFO 7164 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-06 16:24:16.839  INFO 7164 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-06 16:24:17.308  INFO 7164 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-08-06 16:24:17.683  INFO 7164 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-06 16:24:17.730  INFO 7164 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-08-06 16:24:17.730  INFO 7164 --- [restartedMain] com.sxy.BlogApplication                  : Started BlogApplication in 3.291 seconds (JVM running for 4.428)
+2022-08-06 16:24:20.964  INFO 7164 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-06 16:24:20.964  INFO 7164 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-06 16:24:20.965  INFO 7164 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-06 16:24:26.697 DEBUG 7164 --- [http-nio-8080-exec-10] c.s.m.U.findByUsernameAndPassword        : ==>  Preparing: select * from t_user where username = ? and password = ?;
+2022-08-06 16:24:26.714 DEBUG 7164 --- [http-nio-8080-exec-10] c.s.m.U.findByUsernameAndPassword        : ==> Parameters: cindy(String), e10adc3949ba59abbe56e057f20f883e(String)
+2022-08-06 16:24:26.731 DEBUG 7164 --- [http-nio-8080-exec-10] c.s.m.U.findByUsernameAndPassword        : <==      Total: 1
+2022-08-06 16:24:28.123 DEBUG 7164 --- [http-nio-8080-exec-4] c.s.mapper.BlogMapper.getBlogList_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog b, t_type t WHERE b.type_id = t.id
+2022-08-06 16:24:28.124 DEBUG 7164 --- [http-nio-8080-exec-4] c.s.mapper.BlogMapper.getBlogList_COUNT  : ==> Parameters: 
+2022-08-06 16:24:28.125 DEBUG 7164 --- [http-nio-8080-exec-4] c.s.mapper.BlogMapper.getBlogList_COUNT  : <==      Total: 1
+2022-08-06 16:24:28.126 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.BlogMapper.getBlogList    : ==>  Preparing: select b.id,b.title,b.create_time,b.update_time,b.recommend,b.published,b.type_id,t.id,t.name from t_blog b, t_type t WHERE b.type_id = t.id order by b.update_time desc LIMIT ?
+2022-08-06 16:24:28.127 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.BlogMapper.getBlogList    : ==> Parameters: 5(Integer)
+2022-08-06 16:24:28.131 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.BlogMapper.getBlogList    : <==      Total: 5
+2022-08-06 16:24:28.134 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.TypeMapper.getAllType     : ==>  Preparing: select * from t_type
+2022-08-06 16:24:28.135 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.TypeMapper.getAllType     : ==> Parameters: 
+2022-08-06 16:24:28.138 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.TypeMapper.getAllType     : <==      Total: 12
+2022-08-06 16:24:29.660 DEBUG 7164 --- [http-nio-8080-exec-7] com.sxy.mapper.TypeMapper.getAllType     : ==>  Preparing: select * from t_type
+2022-08-06 16:24:29.661 DEBUG 7164 --- [http-nio-8080-exec-7] com.sxy.mapper.TypeMapper.getAllType     : ==> Parameters: 
+2022-08-06 16:24:29.663 DEBUG 7164 --- [http-nio-8080-exec-7] com.sxy.mapper.TypeMapper.getAllType     : <==      Total: 12
+2022-08-06 16:24:29.664 DEBUG 7164 --- [http-nio-8080-exec-7] com.sxy.mapper.TagMapper.getAllTag       : ==>  Preparing: select * from t_tag
+2022-08-06 16:24:29.664 DEBUG 7164 --- [http-nio-8080-exec-7] com.sxy.mapper.TagMapper.getAllTag       : ==> Parameters: 
+2022-08-06 16:24:29.665 DEBUG 7164 --- [http-nio-8080-exec-7] com.sxy.mapper.TagMapper.getAllTag       : <==      Total: 6
+2022-08-06 16:24:29.666 DEBUG 7164 --- [http-nio-8080-exec-7] com.sxy.mapper.BlogMapper.getBlog        : ==>  Preparing: select b.id,b.flag,b.title,b.content, b.first_picture,b.description,b.recommend,b.published,b.share_statement, b.appreciation,b.commentabled,b.tag_ids from t_blog b where b.id = ?;
+2022-08-06 16:24:29.667 DEBUG 7164 --- [http-nio-8080-exec-7] com.sxy.mapper.BlogMapper.getBlog        : ==> Parameters: 114(Long)
+2022-08-06 16:24:29.669 DEBUG 7164 --- [http-nio-8080-exec-7] com.sxy.mapper.BlogMapper.getBlog        : <==      Total: 1
+2022-08-06 16:25:51.161 DEBUG 7164 --- [http-nio-8080-exec-4] c.s.mapper.BlogMapper.getBlogList_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog b, t_type t WHERE b.type_id = t.id
+2022-08-06 16:25:51.161 DEBUG 7164 --- [http-nio-8080-exec-4] c.s.mapper.BlogMapper.getBlogList_COUNT  : ==> Parameters: 
+2022-08-06 16:25:51.162 DEBUG 7164 --- [http-nio-8080-exec-4] c.s.mapper.BlogMapper.getBlogList_COUNT  : <==      Total: 1
+2022-08-06 16:25:51.163 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.BlogMapper.getBlogList    : ==>  Preparing: select b.id,b.title,b.create_time,b.update_time,b.recommend,b.published,b.type_id,t.id,t.name from t_blog b, t_type t WHERE b.type_id = t.id order by b.update_time desc LIMIT ?
+2022-08-06 16:25:51.163 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.BlogMapper.getBlogList    : ==> Parameters: 5(Integer)
+2022-08-06 16:25:51.166 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.BlogMapper.getBlogList    : <==      Total: 5
+2022-08-06 16:25:51.167 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.TypeMapper.getAllType     : ==>  Preparing: select * from t_type
+2022-08-06 16:25:51.167 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.TypeMapper.getAllType     : ==> Parameters: 
+2022-08-06 16:25:51.169 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.TypeMapper.getAllType     : <==      Total: 12
+2022-08-06 16:26:05.870 DEBUG 7164 --- [http-nio-8080-exec-9] c.s.mapper.BlogMapper.getBlogList_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog b, t_type t WHERE b.type_id = t.id
+2022-08-06 16:26:05.871 DEBUG 7164 --- [http-nio-8080-exec-9] c.s.mapper.BlogMapper.getBlogList_COUNT  : ==> Parameters: 
+2022-08-06 16:26:05.872 DEBUG 7164 --- [http-nio-8080-exec-9] c.s.mapper.BlogMapper.getBlogList_COUNT  : <==      Total: 1
+2022-08-06 16:26:05.872 DEBUG 7164 --- [http-nio-8080-exec-9] com.sxy.mapper.BlogMapper.getBlogList    : ==>  Preparing: select b.id,b.title,b.create_time,b.update_time,b.recommend,b.published,b.type_id,t.id,t.name from t_blog b, t_type t WHERE b.type_id = t.id order by b.update_time desc LIMIT ?
+2022-08-06 16:26:05.872 DEBUG 7164 --- [http-nio-8080-exec-9] com.sxy.mapper.BlogMapper.getBlogList    : ==> Parameters: 5(Integer)
+2022-08-06 16:26:05.876 DEBUG 7164 --- [http-nio-8080-exec-9] com.sxy.mapper.BlogMapper.getBlogList    : <==      Total: 5
+2022-08-06 16:26:05.876 DEBUG 7164 --- [http-nio-8080-exec-9] com.sxy.mapper.TypeMapper.getAllType     : ==>  Preparing: select * from t_type
+2022-08-06 16:26:05.877 DEBUG 7164 --- [http-nio-8080-exec-9] com.sxy.mapper.TypeMapper.getAllType     : ==> Parameters: 
+2022-08-06 16:26:05.879 DEBUG 7164 --- [http-nio-8080-exec-9] com.sxy.mapper.TypeMapper.getAllType     : <==      Total: 12
+2022-08-06 16:26:13.108 DEBUG 7164 --- [http-nio-8080-exec-10] c.s.mapper.TypeMapper.getTypeList_COUNT  : ==>  Preparing: SELECT count(0) FROM t_type
+2022-08-06 16:26:13.109 DEBUG 7164 --- [http-nio-8080-exec-10] c.s.mapper.TypeMapper.getTypeList_COUNT  : ==> Parameters: 
+2022-08-06 16:26:13.110 DEBUG 7164 --- [http-nio-8080-exec-10] c.s.mapper.TypeMapper.getTypeList_COUNT  : <==      Total: 1
+2022-08-06 16:26:13.110 DEBUG 7164 --- [http-nio-8080-exec-10] com.sxy.mapper.TypeMapper.getTypeList    : ==>  Preparing: select * from t_type LIMIT ?
+2022-08-06 16:26:13.110 DEBUG 7164 --- [http-nio-8080-exec-10] com.sxy.mapper.TypeMapper.getTypeList    : ==> Parameters: 5(Integer)
+2022-08-06 16:26:13.111 DEBUG 7164 --- [http-nio-8080-exec-10] com.sxy.mapper.TypeMapper.getTypeList    : <==      Total: 5
+2022-08-06 16:26:13.697 DEBUG 7164 --- [http-nio-8080-exec-1] c.sxy.mapper.TagMapper.getTagList_COUNT  : ==>  Preparing: SELECT count(0) FROM t_tag
+2022-08-06 16:26:13.699 DEBUG 7164 --- [http-nio-8080-exec-1] c.sxy.mapper.TagMapper.getTagList_COUNT  : ==> Parameters: 
+2022-08-06 16:26:13.702 DEBUG 7164 --- [http-nio-8080-exec-1] c.sxy.mapper.TagMapper.getTagList_COUNT  : <==      Total: 1
+2022-08-06 16:26:13.703 DEBUG 7164 --- [http-nio-8080-exec-1] com.sxy.mapper.TagMapper.getTagList      : ==>  Preparing: select * from t_tag LIMIT ?
+2022-08-06 16:26:13.703 DEBUG 7164 --- [http-nio-8080-exec-1] com.sxy.mapper.TagMapper.getTagList      : ==> Parameters: 5(Integer)
+2022-08-06 16:26:13.705 DEBUG 7164 --- [http-nio-8080-exec-1] com.sxy.mapper.TagMapper.getTagList      : <==      Total: 5
+2022-08-06 16:26:14.454 DEBUG 7164 --- [http-nio-8080-exec-4] c.s.mapper.BlogMapper.getBlogList_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog b, t_type t WHERE b.type_id = t.id
+2022-08-06 16:26:14.454 DEBUG 7164 --- [http-nio-8080-exec-4] c.s.mapper.BlogMapper.getBlogList_COUNT  : ==> Parameters: 
+2022-08-06 16:26:14.455 DEBUG 7164 --- [http-nio-8080-exec-4] c.s.mapper.BlogMapper.getBlogList_COUNT  : <==      Total: 1
+2022-08-06 16:26:14.455 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.BlogMapper.getBlogList    : ==>  Preparing: select b.id,b.title,b.create_time,b.update_time,b.recommend,b.published,b.type_id,t.id,t.name from t_blog b, t_type t WHERE b.type_id = t.id order by b.update_time desc LIMIT ?
+2022-08-06 16:26:14.455 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.BlogMapper.getBlogList    : ==> Parameters: 5(Integer)
+2022-08-06 16:26:14.458 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.BlogMapper.getBlogList    : <==      Total: 5
+2022-08-06 16:26:14.459 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.TypeMapper.getAllType     : ==>  Preparing: select * from t_type
+2022-08-06 16:26:14.459 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.TypeMapper.getAllType     : ==> Parameters: 
+2022-08-06 16:26:14.460 DEBUG 7164 --- [http-nio-8080-exec-4] com.sxy.mapper.TypeMapper.getAllType     : <==      Total: 12
+2022-08-06 16:26:22.199 DEBUG 7164 --- [http-nio-8080-exec-2] c.s.mapper.BlogMapper.getAllBlog_COUNT   : ==>  Preparing: SELECT count(0) FROM t_blog b, t_type t, t_user u WHERE b.type_id = t.id AND u.id = b.user_id
+2022-08-06 16:26:22.200 DEBUG 7164 --- [http-nio-8080-exec-2] c.s.mapper.BlogMapper.getAllBlog_COUNT   : ==> Parameters: 
+2022-08-06 16:26:22.201 DEBUG 7164 --- [http-nio-8080-exec-2] c.s.mapper.BlogMapper.getAllBlog_COUNT   : <==      Total: 1
+2022-08-06 16:26:22.202 DEBUG 7164 --- [http-nio-8080-exec-2] com.sxy.mapper.BlogMapper.getAllBlog     : ==>  Preparing: select b.id, b.title, b.first_picture, b.views, b.update_time, b.description, t.name typename, t.id typeid, u.nickname, u.avatar from t_blog b, t_type t, t_user u where b.type_id = t.id and u.id = b.user_id order by b.update_time desc LIMIT ?
+2022-08-06 16:26:22.202 DEBUG 7164 --- [http-nio-8080-exec-2] com.sxy.mapper.BlogMapper.getAllBlog     : ==> Parameters: 5(Integer)
+2022-08-06 16:26:22.205 DEBUG 7164 --- [http-nio-8080-exec-2] com.sxy.mapper.BlogMapper.getAllBlog     : <==      Total: 5
+2022-08-06 16:26:22.207 DEBUG 7164 --- [http-nio-8080-exec-2] com.sxy.mapper.TypeMapper.getBlogType    : ==>  Preparing: select t.id tid,t.name tname,b.id bid, b.title, b.type_id from t_type t, t_blog b where t.id = b.type_id
+2022-08-06 16:26:22.208 DEBUG 7164 --- [http-nio-8080-exec-2] com.sxy.mapper.TypeMapper.getBlogType    : ==> Parameters: 
+2022-08-06 16:26:22.211 DEBUG 7164 --- [http-nio-8080-exec-2] com.sxy.mapper.TypeMapper.getBlogType    : <==      Total: 6
+2022-08-06 16:26:22.213 DEBUG 7164 --- [http-nio-8080-exec-2] com.sxy.mapper.TagMapper.getBlogTag      : ==>  Preparing: select t.id tid, t.name, b.id bid, b.title from t_tag t, t_blog b, t_blog_tags bt where t.id = bt.tags_id and b.id = bt.blogs_id
+2022-08-06 16:26:22.213 DEBUG 7164 --- [http-nio-8080-exec-2] com.sxy.mapper.TagMapper.getBlogTag      : ==> Parameters: 
+2022-08-06 16:26:22.218 DEBUG 7164 --- [http-nio-8080-exec-2] com.sxy.mapper.TagMapper.getBlogTag      : <==      Total: 61
+2022-08-06 16:26:22.219 DEBUG 7164 --- [http-nio-8080-exec-2] c.s.m.BlogMapper.getAllRecommendBlog     : ==>  Preparing: select id, title, recommend from t_blog order by update_time desc;
+2022-08-06 16:26:22.219 DEBUG 7164 --- [http-nio-8080-exec-2] c.s.m.BlogMapper.getAllRecommendBlog     : ==> Parameters: 
+2022-08-06 16:26:22.221 DEBUG 7164 --- [http-nio-8080-exec-2] c.s.m.BlogMapper.getAllRecommendBlog     : <==      Total: 6
+2022-08-06 16:26:24.926 DEBUG 7164 --- [http-nio-8080-exec-2] c.s.m.BlogMapper.getDetailedBlogById     : ==>  Preparing: select b.id, b.first_picture, b.flag, b.title, b.content, b.views, b.update_time,b.commentabled, b.share_statement, b.appreciation, u.nickname, u.avatar, tag.id tagid, tag.name tagname from t_blog b, t_user u, t_tag tag, t_blog_tags tb where b.user_id = u.id and tb.blogs_id = b.id and tb.tags_id = tag.id and b.id = ?
+2022-08-06 16:26:24.927 DEBUG 7164 --- [http-nio-8080-exec-2] c.s.m.BlogMapper.getDetailedBlogById     : ==> Parameters: 114(Long)
+2022-08-06 16:26:24.933 DEBUG 7164 --- [http-nio-8080-exec-2] c.s.m.BlogMapper.getDetailedBlogById     : <==      Total: 8
+2022-08-06 16:30:30.330 DEBUG 7164 --- [http-nio-8080-exec-1] c.s.mapper.BlogMapper.getAllBlog_COUNT   : ==>  Preparing: SELECT count(0) FROM t_blog b, t_type t, t_user u WHERE b.type_id = t.id AND u.id = b.user_id
+2022-08-06 16:30:30.331 DEBUG 7164 --- [http-nio-8080-exec-1] c.s.mapper.BlogMapper.getAllBlog_COUNT   : ==> Parameters: 
+2022-08-06 16:30:30.333 DEBUG 7164 --- [http-nio-8080-exec-1] c.s.mapper.BlogMapper.getAllBlog_COUNT   : <==      Total: 1
+2022-08-06 16:30:30.333 DEBUG 7164 --- [http-nio-8080-exec-1] com.sxy.mapper.BlogMapper.getAllBlog     : ==>  Preparing: select b.id, b.title, b.first_picture, b.views, b.update_time, b.description, t.name typename, t.id typeid, u.nickname, u.avatar from t_blog b, t_type t, t_user u where b.type_id = t.id and u.id = b.user_id order by b.update_time desc LIMIT ?
+2022-08-06 16:30:30.334 DEBUG 7164 --- [http-nio-8080-exec-1] com.sxy.mapper.BlogMapper.getAllBlog     : ==> Parameters: 5(Integer)
+2022-08-06 16:30:30.336 DEBUG 7164 --- [http-nio-8080-exec-1] com.sxy.mapper.BlogMapper.getAllBlog     : <==      Total: 5
+2022-08-06 16:30:30.338 DEBUG 7164 --- [http-nio-8080-exec-1] com.sxy.mapper.TypeMapper.getBlogType    : ==>  Preparing: select t.id tid,t.name tname,b.id bid, b.title, b.type_id from t_type t, t_blog b where t.id = b.type_id
+2022-08-06 16:30:30.338 DEBUG 7164 --- [http-nio-8080-exec-1] com.sxy.mapper.TypeMapper.getBlogType    : ==> Parameters: 
+2022-08-06 16:30:30.340 DEBUG 7164 --- [http-nio-8080-exec-1] com.sxy.mapper.TypeMapper.getBlogType    : <==      Total: 6
+2022-08-06 16:30:30.341 DEBUG 7164 --- [http-nio-8080-exec-1] com.sxy.mapper.TagMapper.getBlogTag      : ==>  Preparing: select t.id tid, t.name, b.id bid, b.title from t_tag t, t_blog b, t_blog_tags bt where t.id = bt.tags_id and b.id = bt.blogs_id
+2022-08-06 16:30:30.342 DEBUG 7164 --- [http-nio-8080-exec-1] com.sxy.mapper.TagMapper.getBlogTag      : ==> Parameters: 
+2022-08-06 16:30:30.345 DEBUG 7164 --- [http-nio-8080-exec-1] com.sxy.mapper.TagMapper.getBlogTag      : <==      Total: 61
+2022-08-06 16:30:30.346 DEBUG 7164 --- [http-nio-8080-exec-1] c.s.m.BlogMapper.getAllRecommendBlog     : ==>  Preparing: select id, title, recommend from t_blog order by update_time desc;
+2022-08-06 16:30:30.346 DEBUG 7164 --- [http-nio-8080-exec-1] c.s.m.BlogMapper.getAllRecommendBlog     : ==> Parameters: 
+2022-08-06 16:30:30.347 DEBUG 7164 --- [http-nio-8080-exec-1] c.s.m.BlogMapper.getAllRecommendBlog     : <==      Total: 6
