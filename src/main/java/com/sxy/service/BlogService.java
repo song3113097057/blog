@@ -22,7 +22,7 @@ public interface BlogService {
 
 
     //查询推荐
-    List<Blog> getAllRecommendBlog();  //
+    List<Blog> getAllRecommendBlog();
 
     //根据id查询博客详情
     Blog getDetailedBlogById(Long id);

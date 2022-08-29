@@ -16,10 +16,10 @@ public interface TypeMapper {
     int saveType(Type type);
 
     //根据id查询分类
-    Type getType(Long id);
+    Type getType(@Param("id") Long id);
 
     //根据name查询分类
-    Type getTypeByName(String name);
+    Type getTypeByName(@Param("name") String name);
 
     //分页查询所有分类
     Page<Type> getTypeList();
@@ -34,5 +34,5 @@ public interface TypeMapper {
     int updateType(Type type);
 
     //删除分类
-    void deleteType(Long id);
+    void deleteType(@Param("id") Long id);
 }

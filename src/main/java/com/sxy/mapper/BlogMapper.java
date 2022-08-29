@@ -5,6 +5,7 @@ import com.sxy.entity.Blog;
 import com.sxy.entity.BlogAndTag;
 import com.sxy.entity.Type;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 public interface BlogMapper {
 
     //根据id查询
-    Blog getBlog(Long id);
+    Blog getBlog(@Param("id") Long id);
 
     //分页查询
     Page<Blog> getBlogList(Blog blog);
@@ -23,10 +24,10 @@ public interface BlogMapper {
     Page<Blog> getAllBlog();
 
     //搜索博客
-    Page<Blog> getSearchBlog(String query);
+    Page<Blog> getSearchBlog(@Param("query") String query);
 
     //根据id查询博客详情
-    Blog getDetailedBlogById(Long id);
+    Blog getDetailedBlogById(@Param("id") Long id);
 
 
     //查询推荐
@@ -42,5 +43,5 @@ public interface BlogMapper {
     int updateBlog(Blog blog);
 
     //删除
-    void deleteBlog(Long id);
+    void deleteBlog(@Param("id") Long id);
 }

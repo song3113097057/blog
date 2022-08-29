@@ -26,7 +26,9 @@ public interface TagService {
     //从自负床中获取tag集合
     List<Tag>  getTagByString (String typeIds);
 
-    List<Tag> getBlogTag();  //首页展示博客标签
+
+    //首页展示博客标签
+    List<Tag> getBlogTag();
 
     //修改分类,先查询再修改保存
     int updateTag(Tag tag);

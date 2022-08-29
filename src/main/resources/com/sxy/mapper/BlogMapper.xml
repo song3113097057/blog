@@ -6,11 +6,11 @@
 
     <!--//根据id查询 Blog getBlog(Long id);-->
    <select id="getBlog" resultType="com.sxy.entity.Blog">
-       select b.id,b.flag,b.title,b.content,
-              b.first_picture,b.description,b.recommend,b.published,b.share_statement,
-              b.appreciation,b.commentabled,b.tag_ids
-       from t_blog b
-       where  b.id = #{id};
+       select id,flag,title,content,
+              first_picture,description,recommend,published,share_statement,
+              appreciation,commentabled,tag_ids
+       from t_blog
+       where  id = #{id};
 
    </select>
 
@@ -44,11 +44,8 @@
     </resultMap>
     <select id="getBlogList" resultMap="blog">
         select b.id,b.title,b.create_time,b.update_time,b.recommend,b.published,b.type_id,t.id,t.name
-        from t_blog b, t_type t
+        from t_blog b left join t_type t on b.type_id = t.id
         <where>
-            <if test="1==1">
-                b.type_id = t.id
-            </if>
             <if test="title != null and title !=''">
                 and  b.title like concat('%',#{title},'%')
             </if>
@@ -58,7 +55,8 @@
             <if test="recommend == true">
                 and b.recommend = true
             </if>
-        </where> order by b.update_time desc
+        </where>
+         order by b.update_time desc
     </select>
 
     <!--//分页展示所有：Page<Blog> getAllBlogList();-->
@@ -112,14 +110,11 @@
                t.name typename, t.id typeid,
                u.nickname, u.avatar
         from t_blog b, t_type t, t_user u
-        <where>
-            <if test="1==1">
-                b.type_id = t.id and  u.id = b.user_id
-            </if>
+        where  b.type_id = t.id and  u.id = b.user_id
             <if test="query != null and query !=''">
                 and (b.title like concat('%',#{query},'%') or b.content like concat('%',#{query},'like'))
             </if>
-        </where>
+
 
     </select>
 
